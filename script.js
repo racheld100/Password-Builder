@@ -6,13 +6,16 @@ function generatePassword () {
   var passwordLength = window.prompt("How long you you like your password to be? (8-128 characters)")
   var integer = parseInt(passwordLength, 10);
   if (integer >= "8" && integer <= "128") {
-    var upperCase = window.prompt("Do you want uppercase letters? (yes or no)")  
+    var prompt1 = window.prompt("Do you want uppercase letters? (yes or no)")  
+    var upperCase = prompt1.toLowerCase();
     if (upperCase == "yes" || upperCase == "no") {
-      var numeric = window.prompt("Do you want numbers? (yes or no)")
+      var prompt2 = window.prompt("Do you want numbers? (yes or no)")
+      var numeric = prompt2.toLowerCase();  
         if (numeric == "yes" || numeric == "no") {
-          var characters = window.prompt("Do you want special characters? (yes or no)")
+          var prompt3 = window.prompt("Do you want special characters? (yes or no)")
+          var characters = prompt3.toLowerCase();  
             if (characters == "yes" || characters == "no") {
-              //Write pw builder here!
+              passwordWriter ();
             } else {
               return;
             }
@@ -27,10 +30,14 @@ function generatePassword () {
   }
 }
 
+function passwordWriter () {
+
+}
+
 function writePassword() {
   var password = generatePassword();
   var passwordText = document.querySelector("#password");
-
+  //querySelector replaces placeholder in HTML with passwordText?
   passwordText.value = password;
 }
 
