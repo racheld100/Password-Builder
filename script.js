@@ -3,6 +3,7 @@ var generateBtn = document.querySelector("#generate");
 
 // Write password to the #password input
 function generatePassword () {
+  var password = "";
   var characters = "";
   var passwordLength = window.prompt("How long would you you like your password to be? (8-128 characters)")
   var integer = parseInt(passwordLength, 10);
@@ -19,25 +20,31 @@ function generatePassword () {
   var prompt2 = window.prompt("Do you want uppercase letters? (yes or no)")  
   var upperCase = prompt2.toLowerCase();
   if (upperCase == "yes") {
-    var characters = characters.concat("ABCDEFGHIJKLMNOPQRSTUVWXYZ");
+  characters = characters.concat("ABCDEFGHIJKLMNOPQRSTUVWXYZ");
   } else if (upperCase != "no") {
     return;
   }
   var prompt3 = window.prompt("Do you want numbers? (yes or no)")
   var numeric = prompt3.toLowerCase();  
   if (numeric == "yes") {
-    var characters = characters.concat("0123456789"); 
+  characters = characters.concat("0123456789"); 
   } else if (numeric != "no") {
     return;
   }
   var prompt4 = window.prompt("Do you want special characters? (yes or no)")
   var specialCharacters = prompt4.toLowerCase();  
   if (specialCharacters == "yes") {
-    var characters = characters.concat("!#$%&*+-/=<>?@[]\^_{}|~");
+  characters = characters.concat("!#$%&*+-/=<>?@[]\^_{}|~");
   } else if (specialCharacters != "no") {
     return;
   }
-  // for (let )
+  if (characters.length == 0) {
+    return;
+  }
+  for (let i = 0; i < integer; i++) {
+    password += characters[Math.floor(Math.random() * characters.length)];
+  }
+  return password;
 }
   
 
